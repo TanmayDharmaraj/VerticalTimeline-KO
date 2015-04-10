@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+	<title>Responsive Vertical Timeline</title>
+</head>
+<body>
+	<section id="cd-timeline" class="cd-container" data-bind="foreach: TemplateItems">	
+		<!-- ko template: {name: Type, afterRender: $parent.addAnimation}--><!-- /ko -->
+	</section> <!-- cd-timeline -->
+	
+	<!-- Template Type Picture -->
+	<script type="text/html" id="Picture">
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+				<img src="img/cd-icon-picture.svg" alt="Picture">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2 data-bind="text:Head"></h2>
+				<!-- ko if: MediaUrl -->
+				<p>
+					<img data-bind="attr:{src:MediaUrl}" class="img-responsive center-block"/>
+				</p>
+				<!-- /ko-->
+				<p data-bind="text: Content"></p>
+				<!-- ko if: MoreLink -->
+				<a data-bind="attr:{href:MoreLink.Href},text:MoreLink.Text" class="cd-read-more"></a>
+				<!-- /ko-->
+				<span data-bind="text: Date" class="cd-date"></span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+	</script>
+
+	<!-- Template Type Movie -->
+	<script type="text/html" id="Movie">
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="img/cd-icon-movie.svg" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+			
+			<div class="cd-timeline-content">
+				<h2 data-bind="text:Head"></h2>
+				<div>
+					<!-- ko if: MediaUrl -->
+					<p class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" data-bind="attr:{src:MediaUrl}" allowfullscreen></iframe>
+					</p>
+					<!-- /ko-->
+					<p data-bind="text: Content"></p>
+				</div>
+				<!-- ko if: MoreLink -->
+				<a data-bind="attr:{href:MoreLink.Href},text:MoreLink.Text" class="cd-read-more"></a>
+				<!-- /ko-->
+				<span data-bind="text: Date" class="cd-date"></span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+	</script>
+
+	<!-- Template Type Location -->
+	<script type="text/html" id="Location">
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="img/cd-icon-location.svg" alt="Location">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2 data-bind="text:Head"></h2>
+				<div>
+					<p data-bind="text: Content"></p>
+				</div>
+				<!-- ko if: MoreLink -->
+				<a data-bind="attr:{href:MoreLink.Href},text:MoreLink.Text" class="cd-read-more"></a>
+				<!-- /ko-->
+				<span data-bind="text: Date" class="cd-date"></span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+	</script>
+<script src="js/knockout-3.3.0.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>
